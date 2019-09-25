@@ -37,7 +37,7 @@ class JoblyApi {
   }
 
   static async getSearchedCompanies(query) {
-    let res = await this.request(`companies?search=${query}`);
+    let res = await this.request(`companies`, { search: query });
     return res.companies;
   }
 
@@ -47,7 +47,7 @@ class JoblyApi {
   }
 
   static async getSearchedJobs(query) {
-    let res = await this.request(`jobs?search=${query}`);
+    let res = await this.request(`jobs`, { search: query});
     return res.jobs;
   }
 
@@ -62,8 +62,8 @@ class JoblyApi {
   }
 
   static async updateUser(username, password, formData){
-    let res = await this.request(`users/:${username}`, { username, password, formData }, "patch");
-    return res.user
+    let res = await this.request(`users/${username}`, { username, password, formData }, "patch");
+    return res.user;
   }
  }
 

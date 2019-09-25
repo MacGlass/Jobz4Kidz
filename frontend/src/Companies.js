@@ -13,13 +13,13 @@ class Companies extends PureComponent {
   }
 
   async componentDidMount() {
-    let res = await JoblyApi.getAllCompanies();
-    this.setState({ companies: res });
+    let companies = await JoblyApi.getAllCompanies();
+    this.setState({ companies });
   }
 
   async searchCompanies(query) {
-    let res = await JoblyApi.getSearchedCompanies(query);
-    this.setState({ companies: res });
+    let companies = await JoblyApi.getSearchedCompanies(query);
+    this.setState({ companies });
   } 
 
   render() {

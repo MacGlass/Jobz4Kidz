@@ -9,23 +9,23 @@ class Jobs extends PureComponent {
     this.state = {
       jobs: []
     }
-    this.searchCompanies = this.searchCompanies.bind(this);
+    this.searchJobs = this.searchJobs.bind(this);
   }
 
   async componentDidMount() {
-    let res = await JoblyApi.getAllJobs();
-    this.setState({ jobs: res });
+    let jobs = await JoblyApi.getAllJobs();
+    this.setState({ jobs });
   }
 
-  async searchCompanies(query) {
-    let res = await JoblyApi.getSearchedJobs(query);
-    this.setState({ jobs: res });
+  async searchJobs(query) {
+    let jobs = await JoblyApi.getSearchedJobs(query);
+    this.setState({ jobs });
   } 
 
   render() {
     return (
       <div className="container">
-        <SearchForm search={this.searchCompanies} />
+        <SearchForm search={this.searchJobs} />
         <JobList jobs={this.state.jobs} />
       </div>
     );

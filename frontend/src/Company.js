@@ -13,22 +13,24 @@ class Company extends PureComponent {
   }
 
   async componentDidMount() {
-    let handle = this.props.match.params.handle;
-    let res = await JoblyApi.getCompany(handle);
+    let { handle } = this.props.match.params;
+    let { name, description, jobs } = await JoblyApi.getCompany(handle);
     this.setState({
-      name: res.name,
-      description: res.description,
-      jobs: res.jobs
+      name,
+      description,
+      jobs
     });
-    console.log(this.state.jobs);
   }
 
   render() {
+
+    let { name, description, jobs } = this.state;
+
     return (
       <div className="container justify-content-center">
-        <h1>{this.state.name}</h1>
-        <h3>{this.state.description}</h3>
-        <JobList jobs={this.state.jobs} />
+        <h1>{name}</h1>
+        <h3>{description}</h3>
+        <JobList jobs={jobs} />
       </div>
     );
   }
