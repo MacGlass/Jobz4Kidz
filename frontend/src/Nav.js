@@ -21,7 +21,7 @@ class Nav extends Component {
         <NavLink className="nav-link" to="/profile">Profile</NavLink>
       </li>
       <li className="nav-item">
-        <NavLink className="nav-link" to="/login" tabindex="-1" aria-disabled="true">Log out</NavLink>
+        <NavLink className="nav-link" to="/login" tabIndex="-1" aria-disabled="true">Log out</NavLink>
       </li>
     </ul>
   </div>

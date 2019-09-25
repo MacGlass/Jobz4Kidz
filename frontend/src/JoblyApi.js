@@ -4,7 +4,7 @@ class JoblyApi {
   static async request(endpoint, paramsOrData = {}, verb = "get") {
     paramsOrData._token = ( // for now, hardcode token for "testing"
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
-    "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30" +
+    "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
     "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U");
 
     console.debug("API Call:", endpoint, paramsOrData, verb);
@@ -36,8 +36,18 @@ class JoblyApi {
     return res.companies;
   }
 
+  static async getSearchedCompanies(query) {
+    let res = await this.request(`companies?search=${query}`);
+    return res.companies;
+  }
+
   static async getAllJobs() {
     let res = await this.request('jobs');
+    return res.jobs;
+  }
+
+  static async getSearchedJobs(query) {
+    let res = await this.request(`jobs?search=${query}`);
     return res.jobs;
   }
 
