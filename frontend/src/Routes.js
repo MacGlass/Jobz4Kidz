@@ -12,16 +12,16 @@ class Routes extends PureComponent {
     return (
 
       <Switch>
-        <Route exact path="/companies/:handle"
-          render={rtProps => <Company {...rtProps} />} />
         <Route exact path="/companies"
           render={() => <Companies />} />
+        <Route exact path="/companies/:handle"
+          render={rtProps => <Company {...rtProps} />} />
         <Route exact path="/jobs"
           render={() => <Jobs />} />
-        <Route exact path="/login"
-          render={rtProps => <Login {...rtProps} />} />
         <Route exact path="/profile"
           render={rtProps => <User {...rtProps} />} />
+        <Route exact path="/login"
+          render={rtProps => <Login {...rtProps} />} />
         <Route exact path="/"
           render={() => <Home />} />
         <Redirect to="/" />

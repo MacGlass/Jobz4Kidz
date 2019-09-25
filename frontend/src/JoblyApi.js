@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 class JoblyApi {
   static async request(endpoint, paramsOrData = {}, verb = "get") {
     paramsOrData._token = ( // for now, hardcode token for "testing"
@@ -55,5 +57,4 @@ class JoblyApi {
   }
  }
 
-module.exports = JoblyApi 
-// export default JoblyApi;
+export default JoblyApi;
