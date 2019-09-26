@@ -2,15 +2,22 @@ import React from 'react';
 import './Card.css';
 import JoblyApi from './JoblyApi';
 import decode from 'jwt-decode'
+import JobList from './JobList';
 
 
 class JobCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      applied: false
+      applied: false 
     }
     this.handleApply = this.handleApply.bind(this)
+  }
+
+  componentDidMount() {
+    if(this.props.jobList.includes(this.props.id)) {
+      this.setState({applied: true})
+    }
   }
 
   async handleApply(id) {
@@ -23,6 +30,7 @@ class JobCard extends React.Component {
 
     let { title, salary, equity } = this.props.job;
     let disabled = this.state.applied === true ? "disabled" : ""
+    console.log(this.state.applied)
     return (
       <div className="card" >
         <div className="card-body">

@@ -74,6 +74,11 @@ class JoblyApi {
     let res = await this.request(`jobs/${id}/apply`, { username }, "post")
     return res.message
   }
+
+  static async allApplications() {
+    let res = await this.request('jobs/')
+    return res.jobs
+  }
  }
 
 export default JoblyApi;
