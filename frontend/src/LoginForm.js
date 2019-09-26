@@ -16,11 +16,13 @@ class LoginForm extends Component {
     this.setState({ [evt.target.name]: evt.target.value })
   }
 
-  handleSubmit(evt) {
+  async handleSubmit(evt) {
     evt.preventDefault();
-    this.props.login(this.state);
+    let loggedIn = await this.props.login(this.state);
     this.setState({ username: "", password: "" });
-    this.props.history.push("/");
+    if(loggedIn) {
+      this.props.history.push("/");
+    }
   }
 
   render() {

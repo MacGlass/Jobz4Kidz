@@ -14,12 +14,20 @@ class App extends Component {
     this.setCurrentToken = this.setCurrentToken.bind(this)
   }
 
-  setCurrentToken() {
-    let token = window.localStorage.getItem('_token')
+  componentDidMount() {
+    if (window.localStorage._token) {
+      this.setState({ currentToken: window.localStorage._token});
+    }
+  }
+
+  setCurrentToken(token) {
+    // let token = window.localStorage.getItem('_token')
     if (token) {
-      this.setState({ currentToken: token })
+      window.localStorage.setItem('_token', token);
+      this.setState({ currentToken: token });
     } else {
-      this.setState({ currentToken: null })
+      window.localStorage.removeItem('_token');
+      this.setState({ currentToken: null });
     }
   }
 
@@ -28,7 +36,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <Nav currentToken={this.state.currentToken} />
-          <Routes setToken={this.setCurrentToken} />
+          <Routes setToken={this.setCurrentToken} currentToken={this.state.currentToken} />
         </BrowserRouter>
       </div>
     );

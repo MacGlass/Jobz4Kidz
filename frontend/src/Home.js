@@ -1,9 +1,16 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-class Home extends PureComponent {
+class Home extends Component {
   render() {
     return (
-      <div>Home</div>
+      <div>
+        <h1>Home</h1>
+        {!(window.localStorage._token) ? 
+          <Link to="/login"><button>Login</button></Link> :
+          ""
+        }
+      </div>
     );
   }
 }

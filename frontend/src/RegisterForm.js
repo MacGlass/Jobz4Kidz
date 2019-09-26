@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router";
+
 
 class RegisterForm extends Component {
   constructor(props) {
@@ -6,8 +8,8 @@ class RegisterForm extends Component {
     this.state = {
       username: '',
       password: '',
-      firstName: '',
-      lastName: '',
+      first_name: '',
+      last_name: '',
       email: ''
     }
     this.handleChange = this.handleChange.bind(this);
@@ -20,8 +22,11 @@ class RegisterForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.register(this.state)
-    this.setState({username: "", password: "", firstName: "", lastName: "", email: ""})
+    let registered = this.props.register(this.state)
+    this.setState({username: "", password: "", first_name: "", last_name: "", email: ""});
+    if (registered) {
+      this.props.history.push('/');
+    }
   }
 
   render() {
@@ -42,29 +47,29 @@ class RegisterForm extends Component {
           <input
             onChange={this.handleChange}
             placeholder="Password"
-            type="text"
+            type="password"
             name="password"
             value={this.state.password}
           />
         </div>
         <div>
-          <label htmlFor="firstname"></label>
+          <label htmlFor="first_name"></label>
           <input
             onChange={this.handleChange}
             placeholder="First Name"
             type="text"
-            name="firstName"
-            value={this.state.firstName}
+            name="first_name"
+            value={this.state.first_name}
           />
         </div>
         <div>
-          <label htmlFor="lastname"></label>
+          <label htmlFor="last_name"></label>
           <input
             onChange={this.handleChange}
             placeholder="Last Name"
             type="text"
-            name="lastName"
-            value={this.state.lastName}
+            name="last_name"
+            value={this.state.last_name}
           />
         </div>
         <div>
@@ -83,4 +88,4 @@ class RegisterForm extends Component {
   }
 }
 
-export default RegisterForm;
+export default withRouter(RegisterForm);
