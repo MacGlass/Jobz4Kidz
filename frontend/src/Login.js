@@ -31,8 +31,6 @@ class Login extends PureComponent {
     this.setState({ form: 'Register' });
   }
 
-  
-
   async handleLogin(userData) {
     try {
       let token = await JoblyApi.login(userData);
@@ -54,7 +52,6 @@ class Login extends PureComponent {
       this.props.history.push('/login');
     }
   }
-
 
   render() {
     return (

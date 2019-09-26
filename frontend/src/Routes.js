@@ -15,14 +15,14 @@ class Routes extends PureComponent {
         <Route exact path="/companies"
           render={() => <Companies />} />
         <Route exact path="/companies/:handle"
-          render={rtProps => <Company {...rtProps} />} />
+          render={rtProps => <Company {...rtProps} currentToken={this.props.currentToken} />} />
         <Route exact path="/jobs"
-          render={() => <Jobs />} />
+          render={() => <Jobs currentToken={this.props.currentToken} />} />
         <Route exact path="/profile"
-          render={rtProps => <User {...rtProps} />} />
+          render={rtProps => <User {...rtProps} currentToken={this.props.currentToken} />} />
         <Route exact path="/login"
           render={rtProps => <Login {...rtProps} setToken={this.props.setToken}
-                                     currentToken={this.props.currentToken}/>} />
+            currentToken={this.props.currentToken} />} />
         <Route exact path="/"
           render={() => <Home />} />
         <Redirect to="/" />

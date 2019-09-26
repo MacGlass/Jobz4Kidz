@@ -26,7 +26,7 @@ class Jobs extends PureComponent {
     return (
       <div className="container">
         <SearchForm search={this.searchJobs} />
-        <JobList jobs={this.state.jobs} />
+        <JobList currentToken={this.props.currentToken} jobs={this.state.jobs} />
       </div>
     );
   }

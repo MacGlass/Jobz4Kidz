@@ -30,7 +30,7 @@ class Company extends PureComponent {
       <div className="container justify-content-center">
         <h1>{name}</h1>
         <h3>{description}</h3>
-        <JobList jobs={jobs} />
+        <JobList currentToken={this.props.currentToken} jobs={jobs} />
       </div>
     );
   }

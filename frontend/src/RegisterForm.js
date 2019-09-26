@@ -39,6 +39,7 @@ class RegisterForm extends Component {
             placeholder="Username"
             type="text"
             name="username"
+            id="username"
             value={this.state.username}
           />
         </div>

@@ -8,7 +8,7 @@ class Home extends Component {
         <h1>Home</h1>
         {!(window.localStorage._token) ? 
           <Link to="/login"><button>Login</button></Link> :
-          ""
+          <h3>Welcome Back!</h3>
         }
       </div>
     );

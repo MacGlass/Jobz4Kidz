@@ -17,6 +17,7 @@ class JoblyApi {
     }
 
     catch(err) {
+      console.log(err.response)
       console.error("API Error:", err.response);
       let message = err.response.data.message;
       throw Array.isArray(message) ? message : [message];
@@ -44,7 +45,7 @@ class JoblyApi {
   }
 
   static async getSearchedJobs(query) {
-    let res = await this.request(`jobs`, { search: query});
+    let res = await this.request(`jobs`, { search: query });
     return res.jobs;
   }
 
@@ -59,13 +60,19 @@ class JoblyApi {
   }
 
   static async getUser(username) {
-    let res = await this.request(`users/:${username}`);
+    let res = await this.request(`users/${username}`);
+    return res.user;
+  }
+ 
+  static async updateUser(username, formData){
+    if (!formData.photo_url) {formData.photo_url = "http://www.cycat.io/wp-content/uploads/2018/10/Default-user-picture.jpg"}
+    let res = await this.request(`users/${username}`, formData, "patch");
     return res.user;
   }
 
-  static async updateUser(username, password, formData){
-    let res = await this.request(`users/${username}`, { username, password, formData }, "patch");
-    return res.user;
+  static async apply(id, username) {
+    let res = await this.request(`jobs/${id}/apply`, { username }, "post")
+    return res.message
   }
  }
 
