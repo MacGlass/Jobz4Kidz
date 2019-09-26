@@ -21,7 +21,7 @@ class Routes extends PureComponent {
         <Route exact path="/profile"
           render={rtProps => <User {...rtProps} />} />
         <Route exact path="/login"
-          render={rtProps => <Login {...rtProps} />} />
+          render={rtProps => <Login {...rtProps} setToken={this.props.setToken}/>} />
         <Route exact path="/"
           render={() => <Home />} />
         <Redirect to="/" />
