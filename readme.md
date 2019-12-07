@@ -66,3 +66,9 @@ To update an existing user.
 
 DELETE /users/[username]
 To remove an existing user. 
+
+POST /login
+To authenticate a user and return a JSON Web Token which contains a payload with username and if the user is an admin.
+
+POST /users
+To create a new user and return a JWT which includes the username and whether or not the user is an admin.
